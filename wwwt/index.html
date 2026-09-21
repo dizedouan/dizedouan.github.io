@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="tk123.com 提供专业的在线工具服务，包括文件转换、数据处理、在线计算等实用功能，帮助用户高效解决日常办公与开发中的技术需求。">
+    <meta name="keywords" content="tk123.com,在线工具,文件转换,数据处理,实用工具,免费工具">
+    <title>tk123.com - 专业在线工具箱与数据处理服务平台</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --primary-hover: #1d4ed8;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-secondary: #64748b;
+            --border-color: #e2e8f0;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --radius: 8px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Header & Nav */
+        header {
+            background-color: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 64px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--text-main);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 24px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 60px 0;
+            text-align: center;
+            background: linear-gradient(180deg, #eff6ff 0%, var(--bg-color) 100%);
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+            color: var(--text-main);
+        }
+
+        .hero p {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        .search-box {
+            position: relative;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 14px 20px;
+            padding-right: 120px;
+            border: 1px solid var(--border-color);
+            border-radius: 50px;
+            font-size: 1rem;
+            box-shadow: var(--shadow-md);
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .search-input:focus {
+            border-color: var(--primary-color);
+        }
+
+        .search-btn {
+            position: absolute;
+            right: 8px;
+            top: 8px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 40px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.2s;
+        }
+
+        .search-btn:hover {
+            background-color: var(--primary-hover);
+        }
+
+        /* Main Content */
+        main {
+            flex: 1;
+            padding: 40px 0;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .section-title a {
+            font-size: 0.875rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .section-title a:hover {
+            text-decoration: underline;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+            margin-bottom: 60px;
+        }
+
+        .tool-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 24px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary-color);
+        }
+
+        .tool-icon {
+            width: 48px;
+            height: 48px;
+            background-color: #eff6ff;
+            color: var(--primary-color);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+        }
+
+        .tool-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 8px;
+            color: var(--text-main);
+        }
+
+        .tool-card p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .tool-link {
+            display: inline-block;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .tool-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Feature List */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .feature-item {
+            display: flex;
+            gap: 16px;
+        }
+
+        .feature-icon {
+            flex-shrink: 0;
+            width: 40px;
+            height: 40px;
+            background-color: #ecfdf5;
+            color: #10b981;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .feature-content h4 {
+            margin-bottom: 4px;
+            font-size: 1.1rem;
+        }
+
+        .feature-content p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--card-bg);
+            border-top: 1px solid var(--border-color);
+            padding: 40px 0 20px;
+            margin-top: auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            font-size: 1rem;
+            margin-bottom: 20px;
+            color: var(--text-main);
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .footer-col a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-inner {
+                height: auto;
+                flex-direction: column;
+                padding: 16px 0;
+                gap: 16px;
+            }
+            
+            nav ul {
+                gap: 16px;
+                font-size: 0.9rem;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .category-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+                <span>tk123</span>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">首页</a></li>
+                    <li><a href="#tools">工具分类</a></li>
+                    <li><a href="#about">关于我们</a></li>
+                    <li><a href="#contact">联系客服</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>提升效率的实用工具箱</h1>
+            <p>专注于文件处理、数据转换与在线计算。无需安装软件，安全、快速、免费，随时随地为您提供技术支持。</p>
+            <div class="search-box">
+                <input type="text" class="search-input" placeholder="搜索工具，例如：PDF转换、JSON格式化..." aria-label="搜索工具">
+                <button class="search-btn">搜索</button>
+            </div>
+        </div>
+    </section>
+
+    <main class="container">
+        
+        <!-- 文件处理分类 -->
+        <section id="tools" class="tools-section">
+            <div class="section-title">
+                <h2>文件处理工具</h2>
+                <a href="#">查看全部 &rarr;</a>
+            </div>
+            <div class="category-grid">
+                <article class="tool-card">
+                    <div>
+                        <div class="tool-icon">📄</div>
+                        <h3>PDF转换器</h3>
+                        <p>支持将Word、Excel、PPT等文档转换为PDF格式，或反之，保持排版不变。</p>
+                    </div>
+                    <a href="#" class="tool-link">立即使用 &rarr;</a>
+                </article>
+
+                <article class="tool-card">
+                    <div>
+                        <div class="tool-icon">🖼️</div>
+                        <h3>图片压缩工具</h3>
+                        <p>智能压缩JPG、PNG图片，在保持清晰度的同时显著减小文件体积，优化网页加载速度。</p>
+                    </div>
+                    <a href="#" class="tool-link">立即使用 &rarr;</a>
+                </article>
+
+                <article class="tool-card">
+                    <div>
+                        <div class="tool-icon">🧩</div>
+                        <h3>图片格式转换</h3>
+                        <p>批量转换图片格式，支持JPG、PNG、WEBP、BMP等多种格式互转，操作简单高效。</p>
+                    </div>
+                    <a href="#" class="tool-link">立即使用 &rarr;</a>
+                </article>
+            </div>
+        </section>
+
+        <!-- 数据与开发工具 -->
+        <section class="tools-section">
+            <div class="section-title">
+                <h2>数据与开发工具</h2>
+                <a href="#">查看全部 &rarr;</a>
+            </div>
+            <div class="category-grid">
+                <article class="tool-card">
+                    <div>
+                        <div class="tool-icon">📊</div>
+                        <h3>JSON格式化</h3>
+                        <p>将乱码的JSON字符串美化格式化，支持在线验证语法错误，方便开发者调试。</p>
+                    </div>
+                    <a href="#" class="tool-link">立即使用 &rarr;</a>
+                </article>
+
+                <article class="tool-card">
+                    <div>
+                        <div class="tool-icon">🔢</div>
+                        <h3>在线计算器</h3>
+                        <p>科学计算器功能，支持加减乘除、三角函数、对数运算及单位换算。</p>
+                    </div>
+                    <a href="#" class="tool-link">立即使用 &rarr;</a>
+                </article>
+
+                <article class="tool-card">
+                    <div>
+                        <div class="tool-icon">📅</div>
+                        <h3>日期时间工具</h3>
+                        <p>时间戳转换、日期计算、倒计时生成等实用时间管理功能。</p>
+                    </div>
+                    <a href="#" class="tool-link">立即使用 &rarr;</a>
+                </article>
+            </div>
+        </section>
+
+        <!-- 为什么选择 tk123 -->
+        <section class="features" id="about">
+            <div class="feature-item">
+                <div class="feature-icon">🔒</div>
+                <div class="feature-content">
+                    <h4>安全隐私保护</h4>
+                    <p>所有文件处理均在浏览器本地完成，不会上传至服务器，确保您的数据绝对安全。</p>
+                </div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">⚡</div>
+                <div class="feature-content">
+                    <h4>极速处理体验</h4>
+                    <p>优化的算法和服务器架构，提供秒级响应速度，大幅提升工作效率。</p>
+                </div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">📱</div>
+                <div class="feature-content">
+                    <h4>多端无缝支持</h4>
+                    <p>完美适配电脑、平板和手机屏幕，随时随地访问您需要的工具。</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>关于 tk123</h4>
+                    <ul>
+                        <li><a href="#">网站简介</a></li>
+                        <li><a href="#">服务条款</a></li>
+                        <li><a href="#">隐私政策</a></li>
+                        <li><a href="#">免责声明</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>工具分类</h4>
+                    <ul>
+                        <li><a href="#">文档处理</a></li>
+                        <li><a href="#">图片编辑</a></li>
+                        <li><a href="#">数据转换</a></li>
+                        <li><a href="#">文本工具</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>联系我们</h4>
+                    <ul>
+                        <li><a href="#">在线反馈</a></li>
+                        <li><a href="#">商务合作</a></li>
+                        <li><a href="#">建议投诉</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023-2024 tk123.com 版权所有. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
