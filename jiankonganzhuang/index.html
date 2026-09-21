@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="监控安装教程网提供全方位的家用监控、商用监控、网络摄像头安装指南。包含硬件选购、布线方法、IP配置、手机远程查看及常见故障排查教程，助您轻松搭建安全防线。">
+    <meta name="keywords" content="监控安装教程,家用监控安装,网络摄像头配置,监控布线教程,监控远程查看">
+    <title>监控安装教程-专业安防设备配置与部署指南</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --accent-color: #f59e0b;
+            --text-main: #1f2937;
+            --text-light: #6b7280;
+            --bg-light: #f3f4f6;
+            --bg-white: #ffffff;
+            --border-color: #e5e7eb;
+            --radius: 8px;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            line-height: 1.6;
+            color: var(--text-main);
+            background-color: var(--bg-light);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--bg-white);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo span {
+            color: var(--text-main);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            font-weight: 500;
+            color: var(--text-main);
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 4rem 1.5rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+
+        .hero p {
+            font-size: 1.125rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .cta-button:hover {
+            background-color: #d97706;
+            transform: translateY(-2px);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        /* Grid Layouts */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 2rem;
+        }
+
+        /* Cards */
+        .card {
+            background: var(--bg-white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        .card-header {
+            padding: 1.25rem;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card-header h3 {
+            font-size: 1.1rem;
+            color: var(--text-main);
+        }
+
+        .card-badge {
+            font-size: 0.75rem;
+            padding: 0.25rem 0.5rem;
+            background-color: #dbeafe;
+            color: var(--primary-color);
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        .card-body {
+            padding: 1.5rem;
+        }
+
+        .card-body p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+
+        .card-list li:last-child {
+            border-bottom: none;
+        }
+
+        .card-list li::before {
+            content: "•";
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* Tutorial List */
+        .tutorial-item {
+            display: flex;
+            gap: 1.5rem;
+            background: var(--bg-white);
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 1rem;
+            align-items: flex-start;
+            transition: transform 0.2s;
+        }
+
+        .tutorial-item:hover {
+            transform: translateX(5px);
+        }
+
+        .tutorial-icon {
+            background-color: #eff6ff;
+            color: var(--primary-color);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .tutorial-content h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .tutorial-content a {
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        /* Steps */
+        .step-container {
+            counter-reset: step-counter;
+        }
+
+        .step-item {
+            position: relative;
+            padding-left: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .step-item::before {
+            counter-increment: step-counter;
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2.5rem;
+            height: 2.5rem;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .step-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        /* FAQ Section */
+        .faq-item {
+            background: var(--bg-white);
+            border-radius: var(--radius);
+            margin-bottom: 1rem;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 1.25rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--bg-white);
+        }
+
+        .faq-question::after {
+            content: "+";
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            transition: transform 0.2s;
+        }
+
+        .faq-item.active .faq-question::after {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            padding: 0 1.25rem;
+            background-color: #f9fafb;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+            padding-bottom: 1.25rem;
+        }
+
+        .faq-answer p {
+            color: var(--text-light);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #111827;
+            color: #d1d5db;
+            padding: 3rem 1.5rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 1.25rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-col ul li a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #374151;
+            font-size: 0.875rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: white;
+                padding: 1rem;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            }
+
+            nav ul.show {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+
+            .tutorial-item {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-container">
+        <a href="#" class="logo">
+            🛡️ 监控<span>安装教程</span>
+        </a>
+        <button class="mobile-menu-btn" aria-label="菜单">☰</button>
+        <nav>
+            <ul>
+                <li><a href="#guide">新手入门</a></li>
+                <li><a href="#hardware">硬件选购</a></li>
+                <li><a href="#step">布线配置</a></li>
+                <li><a href="#remote">远程查看</a></li>
+                <li><a href="#faq">常见问题</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>从零开始搭建家庭/商用安防系统</h1>
+        <p>无论您是想保护家庭财产安全，还是管理店铺运营，我们提供详细的监控安装教程、硬件选型指南及网络配置步骤，让技术不再复杂。</p>
+        <a href="#guide" class="cta-button">开始阅读教程</a>
+    </section>
+
+    <div class="container">
+        <!-- Guide Section -->
+        <section id="guide">
+            <h2 style="font-size: 1.75rem; margin-bottom: 1.5rem; color: var(--text-main);">新手入门指南</h2>
+            <div class="grid-3">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>方案规划</h3>
+                        <span class="card-badge">第一步</span>
+                    </div>
+                    <div class="card-body">
+                        <p>在安装前，明确监控范围与重点。家用通常需要覆盖客厅、大门及走廊；商铺则需要覆盖收银台及主要出入口。</p>
+                        <ul class="card-list">
+                            <li>确定点位数量（建议3-4个）</li>
+                            <li>检查网络带宽（4K需至少10M带宽）</li>
+                            <li>评估供电方式（有线 vs 电池）</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3>硬件选型</h3>
+                        <span class="card-badge">第二步</span>
+                    </div>
+                    <div class="card-body">
+                        <p>选择适合的摄像头类型。IPC网络摄像机是主流，需关注画质、夜视能力及存储方式。</p>
+                        <ul class="card-list">
+                            <li>全彩夜视 vs 黑白夜视</li>
+                            <li>红外距离（30米/50米/100米）</li>
+                            <li>存储格式（H.264/H.265）</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3>施工安装</h3>
+                        <span class="card-badge">第三步</span>
+                    </div>
+                    <div class="card-body">
+                        <p>固定支架，连接电源与网线。注意防水处理，尤其是户外摄像头，必须使用防水胶和防水盒。</p>
+                        <ul class="card-list">
+                            <li>电源线与网线分开走线</li>
+                            <li>调整角度避免反光</li>
+                            <li>隐藏线缆保持美观</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Detailed Steps -->
+        <section id="step" style="margin-top: 4rem;">
+            <h2 style="font-size: 1.75rem; margin-bottom: 1.5rem; color: var(--text-main);">核心安装步骤详解</h2>
+            <div class="step-container">
+                <div class="step-item">
+                    <h3 class="step-title">1. 网络环境准备与布线</h3>
+                    <p>确保路由器覆盖监控区域。如果距离较远，建议使用超五类或六类网线（Cat5e/Cat6）。对于无法走明线的环境，可使用无线监控（Wi-Fi）或电力猫。</p>
+                </div>
+                <div class="step-item">
+                    <h3 class="step-title">2. 接入电源与网络</h3>
+                    <p>将电源适配器连接到摄像头背面，并将网线插入网口。注意检查摄像头背面的标签，确认电源电压（通常为12V或24V DC）与网口类型（RJ45）。</p>
+                </div>
+                <div class="step-item">
+                    <h3 class="step-title">3. 路由器端口映射（关键）</h3>
+                    <p>为了让手机能在外网查看，需在路由器后台设置端口映射。将路由器的8080或37777端口映射到摄像头的内网IP地址。若路由器支持UPnP，可自动开启。</p>
+                </div>
+                <div class="step-item">
+                    <h3 class="step-title">4. 浏览器访问与配置</h3>
+                    <p>在电脑浏览器中输入摄像头默认IP地址（通常是192.168.1.108），登录后台。修改默认密码，配置录像计划，并设置分辨率。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Remote Access -->
+        <section id="remote" style="margin-top: 4rem;">
+            <h2 style="font-size: 1.75rem; margin-bottom: 1.5rem; color: var(--text-main);">手机远程查看设置</h2>
+            <div class="grid-2">
+                <div class="tutorial-item">
+                    <div class="tutorial-icon">📱</div>
+                    <div class="tutorial-content">
+                        <h3>下载专用APP</h3>
+                        <p>大多数监控摄像头支持厂商专用APP（如萤石云、海康威视iVMS、TP-Link Tapo等）。在手机应用商店下载对应APP，注册账号。</p>
+                    </div>
+                </div>
+                <div class="tutorial-item">
+                    <div class="tutorial-icon">🔍</div>
+                    <div class="tutorial-content">
+                        <h3>添加设备</h3>
+                        <p>在APP内点击“添加设备”，选择“扫一扫”或“手动添加”。输入摄像头的序列号（SN码）或扫描摄像头上的二维码，按提示连接Wi-Fi。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section id="faq" style="margin-top: 4rem;">
+            <h2 style="font-size: 1.75rem; margin-bottom: 1.5rem; color: var(--text-main);">常见问题解答</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">监控画面卡顿或无法连接怎么办？</div>
+                <div class="faq-answer">
+                    <p>首先检查网线是否插紧，路由器是否支持千兆。如果是无线监控，尝试靠近路由器测试信号强度。检查路由器是否限制了摄像头设备的带宽或端口。如果是IP冲突，需修改摄像头IP地址。</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">需要公网IP才能远程查看吗？</div>
+                <div class="faq-answer">
+                    <p>不一定。现在主流监控摄像头都支持“内网穿透”技术，无需公网IP即可通过APP查看。但如果需要电脑浏览器直接访问，通常需要配置端口映射或使用动态域名解析（DDNS）。</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">监控录像存储在哪里？</div>
+                <div class="faq-answer">
+                    <p>取决于您的设备配置。NVR（网络硬盘录像机）将录像存储在连接的硬盘中；独立IPC（网络摄像机）通常存储在Micro SD卡中，部分高端型号支持云端存储。</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">如何防止监控被黑客入侵？</div>
+                <div class="faq-answer">
+                    <p>务必修改默认管理员密码，使用复杂密码。定期更新固件版本。不要将监控设备连接到公共Wi-Fi。关闭不必要的端口转发。</p>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+
+<footer>
+    <div class="footer-content">
+        <div class="footer-col">
+            <h4>关于本站</h4>
+            <p style="font-size: 0.9rem; color: #9ca3af;">本站致力于提供最专业、最易懂的监控安装教程。从硬件选购到网络配置，帮助用户轻松实现安全防护。</p>
+        </div>
+        <div class="footer-col">
+            <h4>热门教程</h4>
+            <ul>
+                <li><a href="#">家用监控怎么装</a></li>
+                <li><a href="#">店铺监控方案</a></li>
+                <li><a href="#">监控怎么设置移动侦测</a></li>
+                <li><a href="#">局域网共享监控</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>相关资源</h4>
+            <ul>
+                <li><a href="#">网络摄像头品牌对比</a></li>
+                <li><a href="#">路由器端口映射教程</a></li>
+                <li><a href="#">监控布线标准规范</a></li>
+                <li><a href="#">网络安全知识</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2023 监控安装教程网. 保留所有权利. 本站内容仅供学习与参考.</p>
+    </div>
+</footer>
+
+<script>
+    // Mobile Menu Toggle
+    const menuBtn = document.querySelector('.mobile-menu-btn');
+    const navUl = document.querySelector('nav ul');
+
+    menuBtn.addEventListener('click', () => {
+        navUl.classList.toggle('show');
+    });
+
+    // FAQ Accordion
+    const faqItems = document.querySelectorAll('.faq-item');
+
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        question.addEventListener('click', () => {
+            // Close other items
+            faqItems.forEach(otherItem => {
+                if (otherItem !== item) {
+                    otherItem.classList.remove('active');
+                }
+            });
+            // Toggle current item
+            item.classList.toggle('active');
+        });
+    });
+
+    // Smooth Scroll for Anchor Links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth'
+                });
+                // Close mobile menu if open
+                navUl.classList.remove('show');
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
