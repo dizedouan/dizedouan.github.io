@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>韩媒 - 深度追踪韩国社会热点与资讯门户</title>
+    <meta name="description" content="韩媒网提供韩国最新社会新闻、娱乐八卦、科技动态及文化趋势分析。汇聚首尔新闻、首尔经济等权威视角，全方位解读韩国时事与流行文化。">
+    <meta name="keywords" content="韩媒,韩国新闻,韩国娱乐,首尔经济,韩国社会,韩流资讯">
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #0056b3;
+            --secondary-color: #f8f9fa;
+            --text-main: #333333;
+            --text-light: #666666;
+            --accent-color: #e63946;
+            --border-color: #e0e0e0;
+            --container-width: 1200px;
+            --spacing-unit: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-main);
+            background-color: #fff;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        a:hover {
+            color: var(--primary-color);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Utility Classes */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 2px 8px;
+            font-size: 12px;
+            color: #fff;
+            background-color: var(--primary-color);
+            border-radius: 4px;
+            margin-right: 8px;
+        }
+
+        .badge.hot {
+            background-color: var(--accent-color);
+        }
+
+        .badge.ent {
+            background-color: #e63946;
+        }
+
+        .badge.tech {
+            background-color: #0088cc;
+        }
+
+        /* Header */
+        header {
+            background-color: #fff;
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .header-top {
+            background-color: #f4f4f4;
+            font-size: 12px;
+            color: var(--text-light);
+            padding: 8px 0;
+        }
+
+        .header-top .container {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .header-main {
+            padding: 16px 0;
+        }
+
+        .header-main .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--primary-color);
+            letter-spacing: -1px;
+        }
+
+        .logo span {
+            color: var(--text-main);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 24px;
+        }
+
+        .nav-menu a {
+            font-weight: 600;
+            font-size: 16px;
+            padding-bottom: 4px;
+            border-bottom: 2px solid transparent;
+        }
+
+        .nav-menu a:hover, .nav-menu a.active {
+            color: var(--primary-color);
+            border-bottom-color: var(--primary-color);
+        }
+
+        .search-box {
+            display: flex;
+        }
+
+        .search-box input {
+            padding: 8px 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px 0 0 4px;
+            outline: none;
+            width: 200px;
+        }
+
+        .search-box button {
+            padding: 8px 16px;
+            background-color: var(--primary-color);
+            color: #fff;
+            border: none;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 30px 0;
+            background: linear-gradient(to bottom, #fff, #fafafa);
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 24px;
+        }
+
+        .main-feature {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: #000;
+            height: 450px;
+        }
+
+        .main-feature img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.8;
+            transition: transform 0.5s;
+        }
+
+        .main-feature:hover img {
+            transform: scale(1.05);
+            opacity: 0.6;
+        }
+
+        .feature-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 40px;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            color: #fff;
+        }
+
+        .feature-content h2 {
+            font-size: 32px;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        .feature-content p {
+            font-size: 16px;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        .feature-meta {
+            display: flex;
+            gap: 12px;
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        .sub-features {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .sub-feature-card {
+            display: flex;
+            gap: 16px;
+            background: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 16px;
+            transition: box-shadow 0.3s;
+        }
+
+        .sub-feature-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .sub-feature-img {
+            width: 120px;
+            height: 80px;
+            flex-shrink: 0;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .sub-feature-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .sub-feature-text h3 {
+            font-size: 18px;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .sub-feature-text p {
+            font-size: 14px;
+            color: var(--text-light);
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 40px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .section-link {
+            font-size: 14px;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+        }
+
+        .section-link::after {
+            content: "→";
+            margin-left: 4px;
+            color: var(--primary-color);
+        }
+
+        /* News Grid */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .news-card {
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .news-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+
+        .news-img {
+            height: 180px;
+            width: 100%;
+            overflow: hidden;
+            background-color: #eee;
+        }
+
+        .news-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .news-body {
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .news-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            line-height: 1.5;
+            color: var(--text-main);
+        }
+
+        .news-desc {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-bottom: 16px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            flex-grow: 1;
+        }
+
+        .news-footer {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: #999;
+            margin-top: auto;
+        }
+
+        /* Sidebar Layout */
+        .content-layout {
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            gap: 40px;
+        }
+
+        /* Ranking List */
+        .ranking-list {
+            counter-reset: ranking;
+        }
+
+        .ranking-item {
+            display: flex;
+            gap: 16px;
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .ranking-item:last-child {
+            border-bottom: none;
+        }
+
+        .ranking-item::before {
+            counter-increment: ranking;
+            content: counter(ranking);
+            font-size: 24px;
+            font-weight: 800;
+            color: #ddd;
+            line-height: 1;
+        }
+
+        .ranking-item:nth-child(1)::before { color: #ffd700; }
+        .ranking-item:nth-child(2)::before { color: #c0c0c0; }
+        .ranking-item:nth-child(3)::before { color: #cd7f32; }
+
+        .ranking-link {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--text-main);
+            line-height: 1.4;
+        }
+
+        .ranking-link:hover {
+            color: var(--primary-color);
+        }
+
+        /* Topic Tags */
+        .topic-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .topic-tag {
+            padding: 6px 14px;
+            background-color: var(--secondary-color);
+            border-radius: 20px;
+            font-size: 14px;
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+            transition: all 0.2s;
+        }
+
+        .topic-tag:hover {
+            background-color: var(--primary-color);
+            color: #fff;
+            border-color: var(--primary-color);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 60px 0 20px;
+            margin-top: 40px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .footer-col p {
+            font-size: 14px;
+            color: #bdc3c7;
+            line-height: 1.8;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            font-size: 14px;
+            color: #bdc3c7;
+        }
+
+        .footer-col ul li a:hover {
+            color: #fff;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 13px;
+            color: #7f8c8d;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+            }
+            .content-layout {
+                grid-template-columns: 1fr;
+            }
+            .news-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+            .header-main .container {
+                flex-direction: column;
+                gap: 16px;
+            }
+            .search-box {
+                width: 100%;
+            }
+            .search-box input {
+                flex-grow: 1;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-top">
+            <div class="container">
+                <span>欢迎访问韩媒网，全方位了解韩国时事与流行文化</span>
+                <span>更新时间：2023-10-27</span>
+            </div>
+        </div>
+        <div class="header-main">
+            <div class="container">
+                <a href="#" class="logo">韩媒<span>网</span></a>
+                <nav class="nav-menu">
+                    <a href="#" class="active">首页</a>
+                    <a href="#">社会新闻</a>
+                    <a href="#">娱乐八卦</a>
+                    <a href="#">科技数码</a>
+                    <a href="#">韩流文化</a>
+                    <a href="#">国际观察</a>
+                </nav>
+                <div class="search-box">
+                    <input type="text" placeholder="搜索新闻、关键词...">
+                    <button type="button">搜索</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-grid">
+                    <article class="main-feature">
+                        <img src="https://picsum.photos/seed/korea1/800/450" alt="首尔夜景">
+                        <div class="feature-content">
+                            <div class="badge hot">头条</div>
+                            <h2>首尔市政府发布新年度城市发展规划，重点推动绿色交通转型</h2>
+                            <p>近日，首尔特别市市长在年度施政报告中详细阐述了未来的城市治理策略，包括扩大地铁网络覆盖范围及引入智能交通管理系统。</p>
+                            <div class="feature-meta">
+                                <span>2023-10-27</span>
+                                <span>社会</span>
+                                <span>评论 1,204</span>
+                            </div>
+                        </div>
+                    </article>
+                    <aside class="sub-features">
+                        <article class="sub-feature-card">
+                            <div class="sub-feature-img">
+                                <img src="https://picsum.photos/seed/korea2/200/150" alt="K-Pop演唱会">
+                            </div>
+                            <div class="sub-feature-text">
+                                <h3>热门男团“新势力”开启世界巡演，首站首尔门票秒空</h3>
+                                <p>备受瞩目的新晋K-Pop团体在首尔奥林匹克体育场举办的演唱会门票在开售两分钟内全部售罄。</p>
+                            </div>
+                        </article>
+                        <article class="sub-feature-card">
+                            <div class="sub-feature-img">
+                                <img src="https://picsum.photos/seed/korea3/200/150" alt="三星电子">
+                            </div>
+                            <div class="sub-feature-text">
+                                <h3>三星电子发布最新折叠屏手机，主打轻薄与续航提升</h3>
+                                <p>在今日的秋季发布会上，三星展示了其最新的折叠屏技术，旨在进一步巩固其在高端智能手机市场的地位。</p>
+                            </div>
+                        </article>
+                        <article class="sub-feature-card">
+                            <div class="sub-feature-img">
+                                <img src="https://picsum.photos/seed/korea4/200/150" alt="泡菜制作">
+                            </div>
+                            <div class="sub-feature-text">
+                                <h3>传统发酵食品产业现代化：韩国泡菜出口额创历史新高</h3>
+                                <p>随着韩流文化的输出，韩国传统发酵食品在全球范围内受到欢迎，出口数据持续攀升。</p>
+                            </div>
+                        </article>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <div class="container content-layout">
+            <!-- Main Content Column -->
+            <div class="main-column">
+                
+                <!-- Latest News Section -->
+                <section class="section">
+                    <div class="section-header">
+                        <h2 class="section-title">最新资讯</h2>
+                        <a href="#" class="section-link">查看更多</a>
+                    </div>
+                    <div class="news-grid">
+                        <article class="news-card">
+                            <div class="news-img">
+                                <img src="https://picsum.photos/seed/news1/400/300" alt="新闻图片">
+                            </div>
+                            <div class="news-body">
+                                <h3 class="news-title"><a href="#">韩国央行维持基准利率不变，分析人士预计未来可能下调</a></h3>
+                                <p class="news-desc">韩国中央银行今日宣布维持基准利率在3.50%不变，以应对当前复杂的全球经济环境。</p>
+                                <div class="news-footer">
+                                    <span>财经</span>
+                                    <span>2小时前</span>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="news-card">
+                            <div class="news-img">
+                                <img src="https://picsum.photos/seed/news2/400/300" alt="新闻图片">
+                            </div>
+                            <div class="news-body">
+                                <h3 class="news-title"><a href="#">韩国大学入学考试制度改革引发家长与教育界热议</a></h3>
+                                <p class="news-desc">针对目前备受争议的大学修能评价制度，教育部表示将进行为期一年的试点调整。</p>
+                                <div class="news-footer">
+                                    <span>教育</span>
+                                    <span>4小时前</span>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="news-card">
+                            <div class="news-img">
+                                <img src="https://picsum.photos/seed/news3/400/300" alt="新闻图片">
+                            </div>
+                            <div class="news-body">
+                                <h3 class="news-title"><a href="#">韩国影视作品在Netflix全球榜单中表现亮眼</a></h3>
+                                <p class="news-desc">多部韩国剧集和电影在Netflix全球排行榜前列，显示出韩流内容强大的国际影响力。</p>
+                                <div class="news-footer">
+                                    <span>娱乐</span>
+                                    <span>5小时前</span>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="news-card">
+                            <div class="news-img">
+                                <img src="https://picsum.photos/seed/news4/400/300" alt="新闻图片">
+                            </div>
+                            <div class="news-body">
+                                <h3 class="news-title"><a href="#">首尔街头艺术展：涂鸦文化成为城市新名片</a></h3>
+                                <p class="news-desc">为了美化城市环境，首尔市政府在多个区域举办了大型街头艺术展，吸引了众多游客。</p>
+                                <div class="news-footer">
+                                    <span>文化</span>
+                                    <span>6小时前</span>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </section>
+
+                <!-- Entertainment Section -->
+                <section class="section">
+                    <div class="section-header">
+                        <h2 class="section-title">韩娱焦点</h2>
+                        <a href="#" class="section-link">更多娱乐</a>
+                    </div>
+                    <div class="news-grid">
+                        <article class="news-card">
+                            <div class="news-img">
+                                <img src="https://picsum.photos/seed/ent1/400/300" alt="明星">
+                            </div>
+                            <div class="news-body">
+                                <div style="margin-bottom:8px;">
+                                    <span class="badge ent">明星</span>
+                                </div>
+                                <h3 class="news-title"><a href="#">人气女演员新剧收视夺冠，演技获观众一致好评</a></h3>
+                                <p class="news-desc">该电视剧讲述了现代职场女性的奋斗故事，首播收视率突破10%，刷新了同档期纪录。</p>
+                                <div class="news-footer">
+                                    <span>电视剧</span>
+                                    <span>8小时前</span>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="news-card">
+                            <div class="news-img">
+                                <img src="https://picsum.photos/seed/ent2/400/300" alt="音乐">
+                            </div>
+                            <div class="news-body">
+                                <div style="margin-bottom:8px;">
+                                    <span class="badge ent">音乐</span>
+                                </div>
+                                <h3 class="news-title"><a href="#">年度音乐盛典颁奖典礼红毯造型盘点</a></h3>
+                                <p class="news-desc">各大明星在红毯上争奇斗艳，设计师品牌与高定礼服成为焦点，时尚风向标再次确立。</p>
+                                <div class="news-footer">
+                                    <span>时尚</span>
+                                    <span>10小时前</span>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="news-card">
+                            <div class="news-img">
+                                <img src="https://picsum.photos/seed/ent3/400/300" alt="综艺">
+                            </div>
+                            <div class="news-body">
+                                <div style="margin-bottom:8px;">
+                                    <span class="badge ent">综艺</span>
+                                </div>
+                                <h3 class="news-title"><a href="#">经典综艺重启，嘉宾阵容曝光引发粉丝狂欢</a></h3>
+                                <p class="news-desc">陪伴了观众多年的国民综艺宣布回归，首期嘉宾名单公布后，社交媒体话题量瞬间爆炸。</p>
+                                <div class="news-footer">
+                                    <span>综艺</span>
+                                    <span>12小时前</span>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="news-card">
+                            <div class="news-img">
+                                <img src="https://picsum.photos/seed/ent4/400/300" alt="电影">
+                            </div>
+                            <div class="news-body">
+                                <div style="margin-bottom:8px;">
+                                    <span class="badge ent">电影</span>
+                                </div>
+                                <h3 class="news-title"><a href="#">韩国导演新作入围戛纳电影节主竞赛单元</a></h3>
+                                <p class="news-desc">这是该导演时隔十年再次入围戛纳，影片题材聚焦于社会边缘群体，备受国际媒体关注。</p>
+                                <div class="news-footer">
+                                    <span>国际</span>
+                                    <span>14小时前</span>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </section>
+
+                <!-- Tech & Economy Section -->
+                <section class="section">
+                    <div class="section-header">
+                        <h2 class="section-title">科技与经济</h2>
+                        <a href="#" class="section-link">更多科技</a>
+                    </div>
+                    <div class="news-grid">
+                        <article class="news-card">
+                            <div class="news-img">
+                                <img src="https://picsum.photos/seed/tech1/400/300" alt="芯片">
+                            </div>
+                            <div class="news-body">
+                                <div style="margin-bottom:8px;">
+                                    <span class="badge tech">科技</span>
+                                </div>
+                                <h3 class="news-title"><a href="#">韩国半导体产业持续扩产，应对全球芯片需求</a></h3>
+                                <p class="news-desc">为了保障供应链安全，主要半导体企业宣布追加投资，计划在未来五年内增加产能。</p>
+                                <div class="news-footer">
+                                    <span>产业</span>
+                                    <span>3小时前</span>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="news-card">
+                            <div class="news-img">
+                                <img src="https://picsum.photos/seed/tech2/400/300" alt="AI">
+                            </div>
+                            <div class="news-body">
+                                <div style="margin-bottom:8px;">
+                                    <span class="badge tech">科技</span>
+                                </div>
+                                <h3 class="news-title"><a href="#">人工智能初创企业在韩国快速崛起</a></h3>
+                                <p class="news-desc">得益于政府的扶持政策和丰富的人才储备，韩国AI领域涌现出一批具有国际竞争力的初创企业。</p>
+                                <div class="news-footer">
+                                    <span>创新</span>
+                                    <span>5小时前</span>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="news-card">
+                            <div class="news-img">
+                                <img src="https://picsum.photos/seed/tech3/400/300" alt="旅游">
+                            </div>
+                            <div class="news-body">
+                                <div style="margin-bottom:8px;">
+                                    <span class="badge tech">旅游</span>
+                                </div>
+                                <h3 class="news-title"><a href="#">数字化转型助力韩国旅游业复苏</a></h3>
+                                <p class="news-desc">韩国各大旅游城市推出智能导览系统，提升游客体验，预计年底入境游客数量将恢复至疫情前水平。</p>
+                                <div class="news-footer">
+                                    <span>旅游</span>
+                                    <span>7小时前</span>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="news-card">
+                            <div class="news-img">
+                                <img src="https://picsum.photos/seed/tech4/400/300" alt="电商">
+                            </div>
+                            <div class="news-body">
+                                <div style="margin-bottom:8px;">
+                                    <span class="badge tech">商业</span>
+                                </div>
+                                <h3 class="news-title"><a href="#">韩国电商市场增长放缓，实体店转型加速</a></h3>
+                                <p class="news-desc">尽管线上购物依然增长，但增速明显放缓，传统零售商开始探索线上线下融合的新模式。</p>
+                                <div class="news-footer">
+                                    <span>商业</span>
+                                    <span>9小时前</span>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Sidebar Column -->
+            <aside class="sidebar">
+                
+                <!-- Trending Ranking -->
+                <section class="section">
+                    <div class="section-header">
+                        <h2 class="section-title">24小时热榜</h2>
+                    </div>
+                    <div class="ranking-list">
+                        <a href="#" class="ranking-item">
+                            <span class="ranking-link">韩国总统就当前经济形势发表特别讲话</span>
+                        </a>
+                        <a href="#" class="ranking-item">
+                            <span class="ranking-link">某知名品牌因质量问题在韩召回多款产品</span>
+                        </a>
+                        <a href="#" class="ranking-item">
+                            <span class="ranking-link">首尔秋季马拉松报名人数创新高</span>
+                        </a>
+                        <a href="#" class="ranking-item">
+                            <span class="ranking-link">韩国科学家在新能源电池领域取得突破</span>
+                        </a>
+                        <a href="#" class="ranking-item">
+                            <span class="ranking-link">热门韩剧完结，结局引发观众激烈讨论</span>
+                        </a>
+                        <a href="#" class="ranking-item">
+                            <span class="ranking-link">韩国房价走势分析：未来半年是否看涨？</span>
+                        </a>
+                        <a href="#" class="ranking-item">
+                            <span class="ranking-link">新任驻华大使履新，首场记者会亮点回顾</span>
+                        </a>
+                    </div>
+                </section>
+
+                <!-- Topic Tags -->
+                <section class="section">
+                    <div class="section-header">
+                        <h2 class="section-title">热门话题</h2>
+                    </div>
+                    <div class="topic-cloud">
+                        <a href="#" class="topic-tag">#韩流</a>
+                        <a href="#" class="topic-tag">#三星</a>
+                        <a href="#" class="topic-tag">#K-Pop</a>
+                        <a href="#" class="topic-tag">#总统大选</a>
+                        <a href="#" class="topic-tag">#疫苗接种</a>
+                        <a href="#" class="topic-tag">#半导体</a>
+                        <a href="#" class="topic-tag">#旅游</a>
+                        <a href="#" class="topic-tag">#娱乐</a>
+                        <a href="#" class="topic-tag">#房价</a>
+                        <a href="#" class="topic-tag">#教育</a>
+                    </div>
+                </section>
+
+                <!-- Ad Placeholder -->
+                <section class="section" style="padding: 20px 0; text-align: center;">
+                    <div style="background-color: #f0f0f0; width: 100%; height: 250px; display: flex; align-items: center; justify-content: center; color: #999; border: 1px dashed #ccc;">
+                        广告位 / Ad Space
+                    </div>
+                </section>
+
+                <!-- Newsletter -->
+                <section class="section">
+                    <div class="section-header">
+                        <h2 class="section-title">订阅简报</h2>
+                    </div>
+                    <p style="font-size: 14px; color: #666; margin-bottom: 15px;">每日精选韩国热点，不错过任何重要资讯。</p>
+                    <form style="display: flex; flex-direction: column; gap: 10px;">
+                        <input type="email" placeholder="请输入您的邮箱" style="padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+                        <button type="button" style="padding: 10px; background-color: var(--primary-color); color: #fff; border: none; border-radius: 4px; cursor: pointer;">立即订阅</button>
+                    </form>
+                </section>
+
+            </aside>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>关于韩媒网</h4>
+                    <p>韩媒网致力于为中文读者提供最及时、最全面的韩国新闻资讯。我们汇聚首尔各大主流媒体的权威报道，涵盖社会、娱乐、科技、文化等多个领域，助您深入了解韩国现状。</p>
+                </div>
+                <div class="footer-col">
+                    <h4>快速导航</h4>
+                    <ul>
+                        <li><a href="#">社会新闻</a></li>
+                        <li><a href="#">娱乐八卦</a></li>
+                        <li><a href="#">科技数码</a></li>
+                        <li><a href="#">韩流文化</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>服务支持</h4>
+                    <ul>
+                        <li><a href="#">关于我们</a></li>
+                        <li><a href="#">联系方式</a></li>
+                        <li><a href="#">免责声明</a></li>
+                        <li><a href="#">隐私政策</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>关注我们</h4>
+                    <p>微信：hanmei_news</p>
+                    <p>微博：@韩媒网</p>
+                    <p>邮箱：contact@hanmei.com</p>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2023 韩媒网 版权所有. 本站内容仅供资讯参考，不代表本站立场.
+            </div>
+        </div>
+    </footer>
+
+</body>
+                                              </html>
