@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="车友会活动网 - 专业提供汽车自驾游、车友聚会、越野探险及车主聚会活动策划与报名平台。汇聚全国车友，共享自驾乐趣，发现沿途风景。">
+    <meta name="keywords" content="车友会活动,自驾游,车友聚会,汽车俱乐部,越野,自驾攻略">
+    <title>车友会活动-全国自驾游与车友聚会平台</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #d32f2f;
+            --primary-hover: #b71c1c;
+            --secondary-color: #1a237e;
+            --accent-color: #ffca28;
+            --bg-light: #f5f5f5;
+            --text-main: #333333;
+            --text-secondary: #666666;
+            --border-radius: 8px;
+            --container-width: 1200px;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            --shadow-hover: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            line-height: 1.6;
+            color: var(--text-main);
+            background-color: #fff;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Utility Classes */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 24px;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--text-main);
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: var(--primary-color);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            color: var(--text-secondary);
+        }
+
+        /* Header */
+        header {
+            background-color: #fff;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--text-main);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            font-weight: 500;
+            color: var(--text-main);
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary-color);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://picsum.photos/seed/carroad/1600/900.jpg') center/cover no-repeat;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 0 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-search {
+            display: flex;
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 50px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .hero-search input {
+            flex: 1;
+            padding: 15px 25px;
+            border: none;
+            outline: none;
+            font-size: 1rem;
+        }
+
+        .hero-search button {
+            padding: 15px 40px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .hero-search button:hover {
+            background-color: var(--primary-hover);
+        }
+
+        /* Filter Bar */
+        .filter-bar {
+            background-color: white;
+            padding: 20px 0;
+            border-bottom: 1px solid #eee;
+            position: sticky;
+            top: 70px;
+            z-index: 900;
+        }
+
+        .filter-wrapper {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .filter-tag {
+            padding: 8px 20px;
+            background-color: #f0f0f0;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            user-select: none;
+        }
+
+        .filter-tag.active, .filter-tag:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        /* Activities Grid */
+        .activities-section {
+            padding: 60px 0;
+        }
+
+        .activities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 30px;
+        }
+
+        .activity-card {
+            background: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid #eee;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .activity-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .card-image {
+            height: 200px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .activity-card:hover .card-image img {
+            transform: scale(1.05);
+        }
+
+        .card-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: var(--accent-color);
+            color: #333;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .card-content {
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-meta {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .card-location {
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .card-footer {
+            margin-top: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+        }
+
+        .card-price {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .join-count {
+            font-size: 0.85rem;
+            color: #888;
+        }
+
+        /* Features Section */
+        .features-section {
+            background-color: var(--bg-light);
+            padding: 80px 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 30px 20px;
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .feature-item h3 {
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .feature-item p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* How to Join */
+        .how-to-section {
+            padding: 80px 0;
+        }
+
+        .steps-container {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .steps-container::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: #eee;
+            z-index: 0;
+        }
+
+        .step-item {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            width: 30%;
+        }
+
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background-color: white;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 20px;
+        }
+
+        .step-item h3 {
+            margin-bottom: 10px;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            background-color: var(--bg-light);
+            padding: 80px 0;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background-color: white;
+            border-radius: var(--border-radius);
+            margin-bottom: 15px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+        }
+
+        .faq-question:hover {
+            background-color: #fafafa;
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease;
+            color: var(--text-secondary);
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 20px 20px;
+            max-height: 200px;
+        }
+
+        .faq-item.active .faq-question {
+            color: var(--primary-color);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #222;
+            color: #ccc;
+            padding: 60px 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand h3 {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-wrapper nav {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            }
+
+            .nav-wrapper nav.active {
+                display: flex;
+            }
+
+            .nav-wrapper nav ul {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .steps-container {
+                flex-direction: column;
+                gap: 40px;
+            }
+
+            .steps-container::before {
+                display: none;
+            }
+
+            .step-item {
+                width: 100%;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-wrapper">
+            <a href="#" class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/><path d="M2 12h12"/></svg>
+                <span>车友汇</span>
+            </a>
+            <div class="mobile-menu-btn" onclick="toggleMenu()">☰</div>
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="#" class="active">首页</a></li>
+                    <li><a href="#">自驾路线</a></li>
+                    <li><a href="#">越野探险</a></li>
+                    <li><a href="#">车友聚会</a></li>
+                    <li><a href="#">活动攻略</a></li>
+                    <li><a href="#">加入我们</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>发现身边的精彩车旅生活</h1>
+                <p>无论你是新手老手，无论爱车是轿车、SUV还是硬派越野，这里都有属于你的车友会活动。告别孤独驾驶，开启激情旅程。</p>
+                <div class="hero-search">
+                    <input type="text" placeholder="搜索目的地、活动类型或车友会...">
+                    <button>搜索</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Filter Bar -->
+        <div class="filter-bar">
+            <div class="container filter-wrapper">
+                <span class="filter-tag active">全部活动</span>
+                <span class="filter-tag">周末短途游</span>
+                <span class="filter-tag">长途穿越</span>
+                <span class="filter-tag">冰雪自驾</span>
+                <span class="filter-tag">海岛露营</span>
+                <span class="filter-tag">改装聚会</span>
+                <span class="filter-tag">亲子自驾</span>
+            </div>
+        </div>
+
+        <!-- Featured Activities -->
+        <section class="activities-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>热门车友会活动</h2>
+                    <p>精选近期优质行程，等你来报名</p>
+                </div>
+                <div class="activities-grid">
+                    <!-- Card 1 -->
+                    <article class="activity-card">
+                        <div class="card-image">
+                            <span class="card-badge">即将截止</span>
+                            <img src="https://picsum.photos/seed/roadtrip1/400/300.jpg" alt="川西环线自驾">
+                        </div>
+                        <div class="card-content">
+                            <div class="card-meta">
+                                <span>2023.11.15 - 11.18</span>
+                                <span>5天4晚</span>
+                            </div>
+                            <h3 class="card-title">川西秘境·稻城亚丁环线深度自驾之旅</h3>
+                            <div class="card-location">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                                四川·成都
+                            </div>
+                            <div class="card-footer">
+                                <div>
+                                    <span class="card-price">¥2,880</span>
+                                    <span class="join-count">/人</span>
+                                </div>
+                                <button class="btn btn-primary">立即报名</button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Card 2 -->
+                    <article class="activity-card">
+                        <div class="card-image">
+                            <span class="card-badge">余位充足</span>
+                            <img src="https://picsum.photos/seed/roadtrip2/400/300.jpg" alt="喀纳斯秋色">
+                        </div>
+                        <div class="card-content">
+                            <div class="card-meta">
+                                <span>2023.11.20 - 11.22</span>
+                                <span>3天2晚</span>
+                            </div>
+                            <h3 class="card-title">北疆秋色·喀纳斯环线摄影之旅</h3>
+                            <div class="card-location">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                                新疆·阿勒泰
+                            </div>
+                            <div class="card-footer">
+                                <div>
+                                    <span class="card-price">¥3,200</span>
+                                    <span class="join-count">/人</span>
+                                </div>
+                                <button class="btn btn-primary">立即报名</button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Card 3 -->
+                    <article class="activity-card">
+                        <div class="card-image">
+                            <span class="card-badge">热招中</span>
+                            <img src="https://picsum.photos/seed/roadtrip3/400/300.jpg" alt="海南环岛">
+                        </div>
+                        <div class="card-content">
+                            <div class="card-meta">
+                                <span>2023.12.01 - 12.05</span>
+                                <span>5天4晚</span>
+                            </div>
+                            <h3 class="card-title">冬日暖阳·海南环岛自驾露营节</h3>
+                            <div class="card-location">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                                海南·海口
+                            </div>
+                            <div class="card-footer">
+                                <div>
+                                    <span class="card-price">¥1,980</span>
+                                    <span class="join-count">/人</span>
+                                </div>
+                                <button class="btn btn-primary">立即报名</button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Card 4 -->
+                    <article class="activity-card">
+                        <div class="card-image">
+                            <span class="card-badge">越野挑战</span>
+                            <img src="https://picsum.photos/seed/roadtrip4/400/300.jpg" alt="雨崩徒步">
+                        </div>
+                        <div class="card-content">
+                            <div class="card-meta">
+                                <span>2023.11.25 - 11.30</span>
+                                <span>6天5晚</span>
+                            </div>
+                            <h3 class="card-title">梅里雪山·雨崩神瀑徒步自驾团</h3>
+                            <div class="card-location">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                                云南·德钦
+                            </div>
+                            <div class="card-footer">
+                                <div>
+                                    <span class="card-price">¥4,580</span>
+                                    <span class="join-count">/人</span>
+                                </div>
+                                <button class="btn btn-primary">立即报名</button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Card 5 -->
+                    <article class="activity-card">
+                        <div class="card-image">
+                            <span class="card-badge">亲子周末</span>
+                            <img src="https://picsum.photos/seed/roadtrip5/400/300.jpg" alt="黄山">
+                        </div>
+                        <div class="card-content">
+                            <div class="card-meta">
+                                <span>2023.11.18 - 11.19</span>
+                                <span>2天1晚</span>
+                            </div>
+                            <h3 class="card-title">皖南川藏线·亲子休闲自驾游</h3>
+                            <div class="card-location">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                                安徽·宣城
+                            </div>
+                            <div class="card-footer">
+                                <div>
+                                    <span class="card-price">¥1,280</span>
+                                    <span class="join-count">/人</span>
+                                </div>
+                                <button class="btn btn-primary">立即报名</button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Card 6 -->
+                    <article class="activity-card">
+                        <div class="card-image">
+                            <span class="card-badge">冰雪体验</span>
+                            <img src="https://picsum.photos/seed/roadtrip6/400/300.jpg" alt="长白山">
+                        </div>
+                        <div class="card-content">
+                            <div class="card-meta">
+                                <span>2023.12.15 - 12.17</span>
+                                <span>3天2晚</span>
+                            </div>
+                            <h3 class="card-title">林海雪原·长白山北坡冰雪自驾</h3>
+                            <div class="card-location">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                                吉林·长白山
+                            </div>
+                            <div class="card-footer">
+                                <div>
+                                    <span class="card-price">¥2,150</span>
+                                    <span class="join-count">/人</span>
+                                </div>
+                                <button class="btn btn-primary">立即报名</button>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div style="text-align: center; margin-top: 50px;">
+                    <button class="btn btn-outline">查看更多活动</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features -->
+        <section class="features-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>为什么选择我们</h2>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <div class="feature-icon">🚗</div>
+                        <h3>专业车队领航</h3>
+                        <p>每团配备经验丰富的老司机和领队，全程路况导航，确保行车安全。</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">🗺️</div>
+                        <h3>精选路线规划</h3>
+                        <p>避开拥堵路线，探索小众秘境，提供专业的路况报告和避坑指南。</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">👥</div>
+                        <h3>真实车友社群</h3>
+                        <p>汇聚各路车友，活动后建立专属车友群，分享驾驶心得与生活点滴。</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">🏨</div>
+                        <h3>优质住宿餐饮</h3>
+                        <p>严选沿途特色客栈与营地，确保休息质量，品尝地道地方美食。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How to Join -->
+        <section class="how-to-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>轻松参与流程</h2>
+                </div>
+                <div class="steps-container">
+                    <div class="step-item">
+                        <div class="step-number">1</div>
+                        <h3>挑选活动</h3>
+                        <p>浏览官网或APP，根据兴趣选择心仪的车友会活动。</p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">2</div>
+                        <h3>在线报名</h3>
+                        <p>填写报名表单，支付定金锁定名额，填写车辆信息。</p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">3</div>
+                        <h3>加入群聊</h3>
+                        <p>加入活动专属微信群，领取行前通知，认识队友。</p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">4</div>
+                        <h3>快乐出发</h3>
+                        <p>按指定时间地点集合，领取对讲机与车贴，开启旅程。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="faq-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>常见问题解答</h2>
+                </div>
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <div class="faq-question">没有驾驶经验可以参加吗？</div>
+                        <div class="faq-answer">
+                            我们建议参与者具备基本的驾驶技能。对于新手，建议选择轻松的休闲自驾团，并在出发前告知领队您的驾驶情况，以便我们安排适合的车辆和路线。
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">活动包含车辆保险吗？</div>
+                        <div class="faq-answer">
+                            活动组织方会为所有参与者购买短期户外运动意外险。关于车辆保险，建议车主自行确认车辆保险在活动期间处于有效状态，并了解自驾游险种覆盖范围。
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">可以自带车辆参加吗？</div>
+                        <div class="faq-answer">
+                            当然可以。除了指定的大型车队包车团外，大多数活动都欢迎自带车辆。我们会在行前提供车辆检查建议和车队编队规则。
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">如果临时无法参加，退款政策是怎样的？</div>
+                        <div class="faq-answer">
+                            活动开始前15天可无损退款；开始前7-15天退款50%；活动开始前7天内不予退款。特殊情况（如不可抗力）我们会另行协商。
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>车友汇</h3>
+                    <p>致力于为全国车友提供最专业、最有趣的自驾游与车友聚会服务。让每一次出行都充满回忆，让每一位车友都有归属感。</p>
+                </div>
+                <div class="footer-col">
+                    <h4>探索</h4>
+                    <ul>
+                        <li><a href="#">自驾路线</a></li>
+                        <li><a href="#">越野探险</a></li>
+                        <li><a href="#">海岛露营</a></li>
+                        <li><a href="#">周末短途</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>关于</h4>
+                    <ul>
+                        <li><a href="#">品牌故事</a></li>
+                        <li><a href="#">加入我们</a></li>
+                        <li><a href="#">合作推广</a></li>
+                        <li><a href="#">帮助中心</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>联系方式</h4>
+                    <ul>
+                        <li>电话：400-123-4567</li>
+                        <li>邮箱：contact@car-hui.com</li>
+                        <li>地址：北京市朝阳区汽车文化园</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 车友汇 Car-Hui. All Rights Reserved. 仅供示例展示，非真实网站。</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        function toggleMenu() {
+            const nav = document.getElementById('main-nav');
+            nav.classList.toggle('active');
+        }
+
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(item => {
+            item.addEventListener('click', event => {
+                const parent = item.parentElement;
+                parent.classList.toggle('active');
+            });
+        });
+
+        // Filter Tags Interaction
+        document.querySelectorAll('.filter-tag').forEach(tag => {
+            tag.addEventListener('click', function() {
+                document.querySelectorAll('.filter-tag').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+                  </html>
