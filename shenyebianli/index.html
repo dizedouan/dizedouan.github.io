@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>深夜便利店 - 都市夜归人的温暖补给站与深夜食光指南</title>
+    <meta name="description" content="深夜便利店为您提供城市24小时便利服务，深夜美食推荐、24小时营业网点查询、夜班通勤指南及深夜阅读推荐。这里有热腾腾的关东煮、冰镇啤酒与温暖的灯光。">
+    <meta name="keywords" content="深夜便利店, 24小时便利店, 深夜美食, 关东煮, 夜班通勤, 便利店攻略">
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #e67e22;
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-main: #333333;
+            --text-sub: #666666;
+            --border-color: #e9ecef;
+            --spacing-unit: 16px;
+            --max-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Header & Nav */
+        header {
+            background-color: var(--card-bg);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 24px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+        }
+
+        .header-actions button {
+            background-color: var(--primary-color);
+            color: #fff;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+        }
+
+        .header-actions button:hover {
+            background-color: #1a252f;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #2c3e50 0%, #4ca1af 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        .search-bar {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+            background: white;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .search-bar input {
+            flex: 1;
+            border: none;
+            padding: 15px 25px;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .search-bar button {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 0 30px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .search-bar button:hover {
+            background-color: #d35400;
+        }
+
+        /* Main Layout */
+        .main-container {
+            max-width: var(--max-width);
+            margin: 40px auto;
+            padding: 0 var(--spacing-unit);
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+            flex: 1;
+        }
+
+        /* Content Sections */
+        .section-title {
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .section-title a {
+            font-size: 0.9rem;
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: normal;
+        }
+
+        /* Grid Layouts */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 20px;
+        }
+
+        /* Cards */
+        .card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+        }
+
+        .card-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            background-color: #eee;
+        }
+
+        .card-body {
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-tag {
+            font-size: 0.75rem;
+            color: var(--accent-color);
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .card-desc {
+            font-size: 0.9rem;
+            color: var(--text-sub);
+            margin-bottom: 15px;
+            flex: 1;
+        }
+
+        .card-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: #999;
+            margin-top: auto;
+        }
+
+        /* Sidebar */
+        .sidebar-widget {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 30px;
+            border: 1px solid var(--border-color);
+        }
+
+        .sidebar-list {
+            list-style: none;
+        }
+
+        .sidebar-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .sidebar-list li:last-child {
+            border-bottom: none;
+        }
+
+        .sidebar-list a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-size: 0.95rem;
+        }
+
+        .sidebar-list a:hover {
+            color: var(--accent-color);
+        }
+
+        .tag-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tag {
+            background-color: #f0f2f5;
+            padding: 6px 14px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            color: var(--text-sub);
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+
+        .tag:hover {
+            background-color: var(--accent-color);
+            color: white;
+        }
+
+        /* Feature Section (Night Mode) */
+        .night-mode-section {
+            background-color: #2c3e50;
+            color: white;
+            border-radius: 12px;
+            padding: 40px;
+            margin: 40px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .night-mode-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 80% 20%, rgba(255,255,255,0.1) 0%, transparent 50%);
+        }
+
+        .night-mode-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .night-mode-content h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .night-mode-content p {
+            max-width: 600px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            border: 2px solid white;
+            color: white;
+            padding: 10px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-secondary:hover {
+            background-color: white;
+            color: var(--primary-color);
+        }
+
+        /* FAQ Section */
+        .faq-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            margin-bottom: 10px;
+            padding: 20px;
+        }
+
+        .faq-question {
+            font-weight: 600;
+            margin-bottom: 8px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .faq-answer {
+            font-size: 0.9rem;
+            color: var(--text-sub);
+            display: none;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: #bdc3c7;
+            padding: 60px 20px 20px;
+            margin-top: auto;
+        }
+
+        .footer-grid {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h3 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-col a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                height: auto;
+                padding: 15px;
+                gap: 15px;
+            }
+
+            .main-container {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">深夜<span>便利店</span></a>
+            <nav>
+                <ul>
+                    <li><a href="#">营业时间</a></li>
+                    <li><a href="#">深夜美食</a></li>
+                    <li><a href="#">社区互助</a></li>
+                    <li><a href="#">关于我们</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <button>登录/注册</button>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1>24小时不打烊的温暖</h1>
+        <p>无论多晚，总有一盏灯为你亮着。这里有关东煮的热气、冰镇啤酒的清凉，还有城市夜归人的故事。</p>
+        <div class="search-bar">
+            <input type="text" placeholder="搜索附近的便利店、深夜美食或话题...">
+            <button>搜索</button>
+        </div>
+    </section>
+
+    <div class="main-container">
+        <!-- Left Column -->
+        <main>
+            <!-- Featured Story -->
+            <section class="night-mode-section">
+                <div class="night-mode-content">
+                    <h2>深夜食堂：便利店的隐藏菜单</h2>
+                    <p>便利店的微波炉不仅能加热便当，还能变魔术。从经典的炒面面包到创意关东煮，这里是都市人的深夜避风港。</p>
+                    <a href="#" class="btn-secondary">探索深夜菜单</a>
+                </div>
+            </section>
+
+            <!-- Latest Updates -->
+            <section>
+                <div class="section-title">
+                    <h3>深夜动态</h3>
+                    <a href="#">查看更多 &rarr;</a>
+                </div>
+                <div class="grid-2">
+                    <article class="card">
+                        <img src="https://picsum.photos/seed/noodle/400/250" alt="关东煮" class="card-img">
+                        <div class="card-body">
+                            <span class="card-tag">美食推荐</span>
+                            <h4 class="card-title">便利店关东煮汤底：如何熬出浓郁鲜味？</h4>
+                            <p class="card-desc">想要在家复刻便利店关东煮的灵魂？掌握这三种关键食材搭配，让深夜泡面瞬间升级。</p>
+                            <div class="card-meta">
+                                <span>2小时前</span>
+                                <span>评论 12</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <img src="https://picsum.photos/seed/moon/400/250" alt="深夜街道" class="card-img">
+                        <div class="card-body">
+                            <span class="card-tag">夜班指南</span>
+                            <h4 class="card-title">夜班通勤者必备：安全与舒适的生存指南</h4>
+                            <p class="card-desc">如何在深夜的街道上保持安全？我们为您整理了从装备选择到路线规划的实用建议。</p>
+                            <div class="card-meta">
+                                <span>5小时前</span>
+                                <span>评论 34</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <img src="https://picsum.photos/seed/coffee/400/250" alt="便利店咖啡" class="card-img">
+                        <div class="card-body">
+                            <span class="card-tag">生活美学</span>
+                            <h4 class="card-title">便利店咖啡师：那些年你喝过的隐藏特调</h4>
+                            <p class="card-desc">不仅仅是黑咖啡，尝试用便利店的热牛奶和糖浆，调制一杯属于你的深夜拿铁。</p>
+                            <div class="card-meta">
+                                <span>昨天</span>
+                                <span>评论 8</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <img src="https://picsum.photos/seed/nightlife/400/250" alt="深夜阅读" class="card-img">
+                        <div class="card-body">
+                            <span class="card-tag">阅读推荐</span>
+                            <h4 class="card-title">适合在便利店角落阅读的书籍清单</h4>
+                            <p class="card-desc">安静、明亮、随时可买。推荐几本适合在深夜便利店独自阅读的治愈系小说。</p>
+                            <div class="card-meta">
+                                <span>昨天</span>
+                                <span>评论 56</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- FAQ Section -->
+            <section style="margin-top: 40px;">
+                <div class="section-title">
+                    <h3>常见问题 (FAQ)</h3>
+                </div>
+                <div class="faq-item active">
+                    <div class="faq-question" onclick="toggleFaq(this)">24小时便利店通常几点关门？ <span>+</span></div>
+                    <div class="faq-answer">大多数24小时便利店全年无休，但部分连锁店可能会在凌晨2点至4点进行例行盘点，此时可能无法收银或结账，但货架通常保持开放。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">便利店的食物可以过夜吃吗？ <span>+</span></div>
+                    <div class="faq-answer">建议尽量在当天食用完毕。隔夜的便当和熟食容易滋生细菌，即使加热也不建议长期存放。关东煮的汤底和配菜同样建议当天处理。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">深夜在便利店购物需要注意什么？ <span>+</span></div>
+                    <div class="faq-answer">深夜是夜班人员集中的时段，请保管好个人财物。部分便利店设有24小时自助结账机，但遇到问题请及时呼叫店员。</div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Right Sidebar -->
+        <aside>
+            <div class="sidebar-widget">
+                <h3>热门话题</h3>
+                <div class="tag-cloud">
+                    <a href="#" class="tag">#关东煮</a>
+                    <a href="#" class="tag">#夜班生活</a>
+                    <a href="#" class="tag">#便利店美食</a>
+                    <a href="#" class="tag">#城市观察</a>
+                    <a href="#" class="tag">#深夜阅读</a>
+                    <a href="#" class="tag">#通勤装备</a>
+                </div>
+            </div>
+
+            <div class="sidebar-widget">
+                <h3>营业时间查询</h3>
+                <ul class="sidebar-list">
+                    <li>
+                        <a href="#">全家便利店 (近地铁口)</a>
+                        <span>24h</span>
+                    </li>
+                    <li>
+                        <a href="#">7-Eleven (步行5分钟)</a>
+                        <span>24h</span>
+                    </li>
+                    <li>
+                        <a href="#">罗森 (老城区中心)</a>
+                        <span>23:00 关门</span>
+                    </li>
+                    <li>
+                        <a href="#">全家 (火车站店)</a>
+                        <span>24h</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="sidebar-widget">
+                <h3>便民服务</h3>
+                <ul class="sidebar-list">
+                    <li><a href="#">ATM取款</a></li>
+                    <li><a href="#">打印复印</a></li>
+                    <li><a href="#">快递代收</a></li>
+                    <li><a href="#">手机充电</a></li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h3>深夜便利店</h3>
+                <p style="font-size: 0.9rem; opacity: 0.8;">致力于为城市夜归人提供最及时的资讯、最温暖的陪伴和最实用的生活指南。</p>
+            </div>
+            <div class="footer-col">
+                <h3>探索</h3>
+                <ul>
+                    <li><a href="#">深夜美食</a></li>
+                    <li><a href="#">夜班攻略</a></li>
+                    <li><a href="#">城市故事</a></li>
+                    <li><a href="#">会员中心</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>支持</h3>
+                <ul>
+                    <li><a href="#">联系我们</a></li>
+                    <li><a href="#">加入我们</a></li>
+                    <li><a href="#">隐私政策</a></li>
+                    <li><a href="#">使用条款</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>关注我们</h3>
+                <ul>
+                    <li><a href="#">微信公众号</a></li>
+                    <li><a href="#">微博</a></li>
+                    <li><a href="#">小红书</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 深夜便利店 版权所有 | 仅供演示</p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple FAQ Toggle Logic
+        function toggleFaq(element) {
+            const parent = element.parentElement;
+            parent.classList.toggle('active');
+            
+            // Toggle icon
+            const icon = element.querySelector('span');
+            if (parent.classList.contains('active')) {
+                icon.textContent = '-';
+            } else {
+                icon.textContent = '+';
+            }
+        }
+
+        // Search Bar Interaction (Mock)
+        const searchInput = document.querySelector('.search-bar input');
+        const searchBtn = document.querySelector('.search-bar button');
+
+        function performSearch() {
+            const term = searchInput.value.trim();
+            if (term) {
+                alert(`正在为您搜索：${term}\n(这是一个演示页面，实际搜索功能需要连接后端API)`);
+                searchInput.value = '';
+            }
+        }
+
+        searchBtn.addEventListener('click', performSearch);
+        searchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') performSearch();
+        });
+    </script>
+</body>
+</html>
